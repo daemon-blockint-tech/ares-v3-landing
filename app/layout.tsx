@@ -13,9 +13,14 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "ARES V3 · Autonomous security for Solana",
+  title: "ARES",
   description:
     "Open-source four-phase analyzer: regex, macro-aware AST, intra-procedural taint, local judge. Runs locally; benchmark harness included.",
+  icons: {
+    icon: [{ url: "/ARES_LOGO_WHITE.png", type: "image/png" }],
+    shortcut: "/ARES_LOGO_WHITE.png",
+    apple: "/ARES_LOGO_WHITE.png",
+  },
 };
 
 export default function RootLayout({
