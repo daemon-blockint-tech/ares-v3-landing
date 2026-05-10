@@ -1,0 +1,408 @@
+"use client";
+
+import Image from "next/image";
+import { useState } from "react";
+import { motion, AnimatePresence } from "motion/react";
+import {
+  TestTube2,
+  Braces,
+  GitBranch,
+  ShieldCheck,
+  LifeBuoy,
+  FileText,
+  Menu,
+  X,
+  Code2,
+  BookOpen,
+  Megaphone,
+} from "lucide-react";
+
+const GH = "https://github.com/daemon-blockint-tech/ARES-v3";
+const X_PROFILE = "https://x.com/aressystem_";
+const WHITEPAPER = "/ares-v3-whitepaper.pdf";
+const ARES_LOGO = "/ARES_LOGO_WHITE.png";
+
+export function Navigation2() {
+  const [activeMenu, setActiveMenu] = useState<string | null>(null);
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+
+  const menuItems = {
+    Product: [
+      {
+        icon: GitBranch,
+        title: "Four phases + judge",
+        description: "Regex, then macro-aware AST, taint, then a local judge. No model in the hot path.",
+        href: "#features",
+      },
+      {
+        icon: Braces,
+        title: "Macro-aware AST",
+        description: "Anchor and Solitaire account shapes after expansion, not just the text you typed.",
+        href: "#features",
+      },
+      {
+        icon: ShieldCheck,
+        title: "Policy & guardrails",
+        description: "Dispatch, scoped output, audit logs when you wire the server layout.",
+        href: "#features",
+      },
+      {
+        icon: TestTube2,
+        title: "Two-segment benchmark",
+        description: "11 stubs for regressions, nine audited repos for recall. Rerun it yourself.",
+        href: "#get-started",
+      },
+    ],
+    Resources: [
+      {
+        icon: Code2,
+        title: "Source on GitHub",
+        description: "MIT / Apache-2.0. Clone it and run on your box.",
+        href: GH,
+      },
+      {
+        icon: Megaphone,
+        title: "Updates on X",
+        description: "Follow @aressystem_ for announcements and research notes.",
+        href: X_PROFILE,
+      },
+      {
+        icon: BookOpen,
+        title: "Whitepaper (PDF)",
+        description: "Methods, how we built the benchmark, what we did not try to prove.",
+        href: WHITEPAPER,
+      },
+      {
+        icon: LifeBuoy,
+        title: "FAQ & limitations",
+        description: "Where the tool stops and a human still decides.",
+        href: "#faq",
+      },
+      {
+        icon: FileText,
+        title: "Run the benchmark",
+        description: "Harness commands and where the dataset lives in the repo.",
+        href: "#get-started",
+      },
+    ],
+  };
+
+  return (
+    <>
+      <nav className="fixed top-0 left-0 right-0 z-50 w-full px-4 sm:px-6 py-6 sm:py-8">
+        <div className="mx-auto w-full max-w-[1400px]">
+          {/* Desktop Navigation */}
+          <motion.div
+            className="relative mx-auto hidden lg:block"
+            initial={{ opacity: 0, y: -20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5, ease: [0.4, 0, 0.2, 1] }}
+            onMouseLeave={() => setActiveMenu(null)}
+          >
+            {/* Nav Container - Always rounded rectangle */}
+            <div className="mx-auto w-fit rounded-3xl bg-white/40 backdrop-blur-2xl border border-neutral-200/50 shadow-xl dark:bg-neutral-950/20 dark:border-neutral-800/50 overflow-hidden">
+              {/* Main Nav Bar */}
+              <div className="flex items-center justify-between gap-2 pl-6 pr-3 py-3">
+                {/* Logo */}
+                <a
+                  href="#top"
+                  className="mr-6 flex shrink-0 items-center no-underline"
+                >
+                  <Image
+                    src={ARES_LOGO}
+                    alt="ARES"
+                    width={156}
+                    height={40}
+                    className="h-7 w-auto"
+                    priority
+                  />
+                </a>
+
+                {/* Nav Links */}
+                <div className="flex items-center gap-1">
+                  <button
+                    onMouseEnter={() => setActiveMenu("Product")}
+                    className="px-4 py-2 text-sm tracking-tight font-light text-neutral-600 dark:text-neutral-400 hover:text-neutral-900 dark:hover:text-white rounded-full"
+                  >
+                    Product
+                  </button>
+                  <button
+                    onMouseEnter={() => setActiveMenu("Resources")}
+                    className="px-4 py-2 text-sm tracking-tight font-light text-neutral-600 dark:text-neutral-400 hover:text-neutral-900 dark:hover:text-white rounded-full"
+                  >
+                    Resources
+                  </button>
+                  <a
+                    href="#deployment"
+                    className="px-4 py-2 text-sm tracking-tight font-light text-neutral-600 dark:text-neutral-400 hover:text-neutral-900 dark:hover:text-white rounded-full no-underline"
+                    onMouseEnter={() => setActiveMenu(null)}
+                  >
+                    Deploy
+                  </a>
+                </div>
+
+                {/* Right Side Actions */}
+                <div className="flex items-center gap-2 ml-6">
+                  <a
+                    href={GH}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="px-4 py-2 tracking-tight text-sm font-light text-neutral-600 dark:text-neutral-400 hover:text-neutral-900 dark:hover:text-white no-underline"
+                    onMouseEnter={() => setActiveMenu(null)}
+                  >
+                    View source
+                  </a>
+                  <a
+                    href={X_PROFILE}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="px-4 py-2 tracking-tight text-sm font-light text-neutral-600 dark:text-neutral-400 hover:text-neutral-900 dark:hover:text-white no-underline"
+                    onMouseEnter={() => setActiveMenu(null)}
+                  >
+                    X
+                  </a>
+                  <a
+                    href="#get-started"
+                    className="px-5 py-2 rounded-lg bg-landing-canvas dark:bg-white text-white dark:text-black text-sm font-light tracking-tight hover:bg-neutral-800 dark:hover:bg-neutral-200 no-underline"
+                    onMouseEnter={() => setActiveMenu(null)}
+                  >
+                    Run the benchmark
+                  </a>
+                </div>
+              </div>
+
+              {/* Expanded Content */}
+              <AnimatePresence>
+                {activeMenu && (
+                  <motion.div
+                    initial={{ height: 0, opacity: 0 }}
+                    animate={{ height: "auto", opacity: 1 }}
+                    exit={{ height: 0, opacity: 0 }}
+                    transition={{ duration: 0.3, ease: [0.4, 0, 0.2, 1] }}
+                    className="overflow-hidden"
+                  >
+                    <div className="p-2">
+                      <div className="grid grid-cols-2 gap-3 w-[620px]">
+                        {menuItems[activeMenu as keyof typeof menuItems].map(
+                          (item, index) => {
+                            const Icon = item.icon;
+                            return (
+                              <motion.a
+                                key={item.title}
+                                href={item.href}
+                                initial={{ opacity: 0, y: 10 }}
+                                animate={{ opacity: 1, y: 0 }}
+                                transition={{
+                                  duration: 0.2,
+                                  delay: index * 0.05,
+                                  ease: "easeOut",
+                                }}
+                                className="group flex items-start gap-3 rounded-2xl bg-white/20 backdrop-blur-2xl dark:bg-neutral-950/20 border border-neutral-300 dark:border-neutral-800/50 p-4 hover:border-neutral-300 dark:hover:border-neutral-700 hover:shadow-md transition-[border-color,box-shadow] duration-200 no-underline"
+                                {...(item.href.startsWith("http") ||
+                                item.href.endsWith(".pdf")
+                                  ? {
+                                      target: "_blank",
+                                      rel: "noopener noreferrer",
+                                    }
+                                  : {})}
+                              >
+                                <div className="shrink-0 rounded-lg bg-neutral-100 dark:bg-neutral-800 p-2">
+                                  <Icon className="w-5 h-5 text-neutral-700 dark:text-neutral-300" />
+                                </div>
+                                <div className="flex-1 min-w-0">
+                                  <h3 className="text-sm font-normal text-neutral-900 dark:text-white mb-0.5 group-hover:text-neutral-700 dark:group-hover:text-neutral-200 transition-colors">
+                                    {item.title}
+                                  </h3>
+                                  <p className="text-xs text-neutral-600 dark:text-neutral-400 leading-snug">
+                                    {item.description}
+                                  </p>
+                                </div>
+                              </motion.a>
+                            );
+                          },
+                        )}
+                      </div>
+                    </div>
+                  </motion.div>
+                )}
+              </AnimatePresence>
+            </div>
+          </motion.div>
+
+          {/* Mobile Navigation */}
+          <motion.div
+            className="lg:hidden"
+            initial={{ opacity: 0, y: -20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5, ease: [0.4, 0, 0.2, 1] }}
+          >
+            <div className="rounded-3xl bg-white/40 backdrop-blur-2xl border border-neutral-300 shadow-xl dark:bg-neutral-950/20 dark:border-neutral-800/50 overflow-hidden">
+              {/* Mobile Nav Bar */}
+              <div className="flex items-center justify-between pl-4 pr-3 py-3">
+                {/* Logo */}
+                <a
+                  href="#top"
+                  className="flex shrink-0 items-center no-underline"
+                >
+                  <Image
+                    src={ARES_LOGO}
+                    alt="ARES"
+                    width={156}
+                    height={40}
+                    className="h-7 w-auto"
+                    priority
+                  />
+                </a>
+
+                {/* Mobile Menu Button */}
+                <button
+                  onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+                  className="flex h-10 w-10 items-center justify-center rounded-lg bg-landing-canvas dark:bg-white text-white dark:text-black"
+                  aria-label={mobileMenuOpen ? "Close menu" : "Open menu"}
+                >
+                  {mobileMenuOpen ? (
+                    <X className="h-5 w-5" />
+                  ) : (
+                    <Menu className="h-5 w-5" />
+                  )}
+                </button>
+              </div>
+
+              {/* Mobile Expanded Content */}
+              <AnimatePresence>
+                {mobileMenuOpen && (
+                  <motion.div
+                    initial={{ height: 0, opacity: 0 }}
+                    animate={{ height: "auto", opacity: 1 }}
+                    exit={{ height: 0, opacity: 0 }}
+                    transition={{ duration: 0.3, ease: [0.4, 0, 0.2, 1] }}
+                    className="overflow-hidden"
+                  >
+                    <div className="px-4 pb-4 pt-2">
+                      {/* Mobile Menu Content */}
+                      <div className="space-y-4">
+                        {/* Simple Links */}
+                        <div className="space-y-1">
+                          <a
+                            href="#deployment"
+                            className="block py-2 px-2 text-sm font-medium text-neutral-900 dark:text-white no-underline"
+                          >
+                            Deploy
+                          </a>
+                          <a
+                            href={GH}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="block py-2 px-2 text-sm font-medium text-neutral-600 dark:text-neutral-400 no-underline"
+                          >
+                            View source
+                          </a>
+                          <a
+                            href={X_PROFILE}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="block py-2 px-2 text-sm font-medium text-neutral-600 dark:text-neutral-400 no-underline"
+                          >
+                            Updates on X
+                          </a>
+                        </div>
+
+                        {/* Mobile CTA */}
+                        <div>
+                          <a
+                            href="#get-started"
+                            className="block w-full text-center px-6 py-2.5 rounded-full bg-landing-canvas dark:bg-white text-white dark:text-black text-sm font-medium no-underline"
+                          >
+                            Run the benchmark
+                          </a>
+                        </div>
+
+                        {/* Product Section */}
+                        <div className="pt-2 border-neutral-200 dark:border-neutral-800">
+                          <h3 className="text-sm font-bold text-neutral-900 dark:text-white mb-2 px-2">
+                            Product
+                          </h3>
+                          <div className="space-y-2">
+                            {menuItems.Product.map((item) => {
+                              const Icon = item.icon;
+                              return (
+                                <a
+                                  key={item.title}
+                                  href={item.href}
+                                  className="flex items-start gap-3 rounded-xl bg-white/20 backdrop-blur-2xl dark:bg-neutral-950/20 border border-neutral-200/50 dark:border-neutral-800/50 p-3 no-underline"
+                                  {...(item.href.startsWith("http") ||
+                                  item.href.endsWith(".pdf")
+                                    ? {
+                                        target: "_blank",
+                                        rel: "noopener noreferrer",
+                                      }
+                                    : {})}
+                                >
+                                  <div className="shrink-0 rounded-lg bg-neutral-100 dark:bg-neutral-800 p-2">
+                                    <Icon className="w-4 h-4 text-neutral-700 dark:text-neutral-300" />
+                                  </div>
+                                  <div className="flex-1 min-w-0">
+                                    <h4 className="text-sm font-semibold text-neutral-900 dark:text-white mb-0.5">
+                                      {item.title}
+                                    </h4>
+                                    <p className="text-xs text-neutral-600 dark:text-neutral-400">
+                                      {item.description}
+                                    </p>
+                                  </div>
+                                </a>
+                              );
+                            })}
+                          </div>
+                        </div>
+
+                        {/* Resources Section */}
+                        <div>
+                          <h3 className="text-sm font-bold text-neutral-900 dark:text-white mb-2 px-2">
+                            Resources
+                          </h3>
+                          <div className="space-y-2">
+                            {menuItems.Resources.map((item) => {
+                              const Icon = item.icon;
+                              return (
+                                <a
+                                  key={item.title}
+                                  href={item.href}
+                                  className="flex items-start gap-3 rounded-xl bg-white/20 backdrop-blur-2xl dark:bg-neutral-950/20 border border-neutral-200/50 dark:border-neutral-800/50 p-3 no-underline"
+                                  {...(item.href.startsWith("http") ||
+                                  item.href.endsWith(".pdf")
+                                    ? {
+                                        target: "_blank",
+                                        rel: "noopener noreferrer",
+                                      }
+                                    : {})}
+                                >
+                                  <div className="shrink-0 rounded-lg bg-neutral-100 dark:bg-neutral-800 p-2">
+                                    <Icon className="w-4 h-4 text-neutral-700 dark:text-neutral-300" />
+                                  </div>
+                                  <div className="flex-1 min-w-0">
+                                    <h4 className="text-sm font-semibold text-neutral-900 dark:text-white mb-0.5">
+                                      {item.title}
+                                    </h4>
+                                    <p className="text-xs text-neutral-600 dark:text-neutral-400">
+                                      {item.description}
+                                    </p>
+                                  </div>
+                                </a>
+                              );
+                            })}
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </motion.div>
+                )}
+              </AnimatePresence>
+            </div>
+          </motion.div>
+        </div>
+      </nav>
+    </>
+  );
+}
+
+export default Navigation2;
