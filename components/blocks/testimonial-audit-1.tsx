@@ -43,7 +43,8 @@ export default function TestimonialAudit1() {
 
           <blockquote className="mb-8 text-center">
             <p className="text-lg font-medium leading-relaxed text-white/90 sm:text-xl md:text-[1.35rem] md:leading-snug">
-              Seven validated findings: SDK risks, Solana logic, attack chains, fixes.
+              Seven validated findings across SDK surface, on-chain logic, and end-to-end attack
+              chains, each with remediation guidance.
             </p>
           </blockquote>
 
@@ -68,7 +69,7 @@ export default function TestimonialAudit1() {
               href={REPORT_HREF}
               className="inline-flex min-h-11 items-center gap-2 rounded-full border border-zinc-700 bg-zinc-900 px-5 py-2.5 text-sm font-medium text-white transition-colors hover:bg-zinc-800 no-underline"
             >
-              Read full report
+              Open full report
               <ArrowUpRight className="h-4 w-4 shrink-0 opacity-80" aria-hidden />
             </Link>
           </footer>

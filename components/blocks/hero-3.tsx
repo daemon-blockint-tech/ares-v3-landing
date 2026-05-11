@@ -117,7 +117,7 @@ export function Hero3() {
           <h1 className="relative pb-[4vmax] pl-[4vmax] pr-[4vmax] text-[5vmax] leading-tight">
             <span className="block">
               <ShinyText
-                text="Autonomous Security"
+                text="Same bytes, same findings."
                 className="text-[5vmax] leading-tight"
                 color="rgba(255,255,255,0.82)"
                 shineColor="#ffffff"
@@ -131,7 +131,7 @@ export function Hero3() {
             </span>
             <span className="mt-[0.08em] block">
               <ShinyText
-                text="For The Frontier."
+                text="Security signal for Solana Rust."
                 className="text-[5vmax] leading-tight"
                 color="rgba(255,255,255,0.82)"
                 shineColor="#14f195"

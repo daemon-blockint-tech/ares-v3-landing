@@ -83,14 +83,14 @@ export default function Footer4() {
         { text: "Whitepaper (PDF)", href: "/ares-v3-whitepaper.pdf", external: true },
         { text: "GitHub", href: "https://github.com/daemon-blockint-tech/ARES-v3", external: true },
         { text: "X (@aressystem_)", href: X_PROFILE, external: true },
-        { text: "Run benchmark", href: "#get-started" },
+        { text: "Run the benchmark", href: "#get-started" },
         { text: "FAQ", href: "#faq" },
       ],
     },
     {
       title: "Developers",
       links: [
-        { text: "Local CLI", href: "#pricing" },
+        { text: "Local CLI", href: "#get-started" },
         { text: "Harness output", href: "#get-started" },
       ],
     },

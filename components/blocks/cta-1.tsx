@@ -29,10 +29,10 @@ export default function CTA1() {
             viewport={{ once: true }}
             transition={{ duration: 0.5, delay: 0.06 }}
           >
-            Clone the open-source tree and run the bundled harness on hardware you control. Segment
-            A is eleven deterministic stubs; Segment B scores recall and precision on nine audited
-            public repos—the same four-phase, deterministic pipeline (regex → macro-aware AST → taint
-            → local judge) described in the paper. If you cannot reproduce a number, do not ship it.
+            Clone the tree and run the harness on hardware you trust. Segment A is eleven deterministic
+            stubs. Segment B scores recall and precision on nine audited public repos. Same four-phase
+            pipeline as the paper: regex, macro-aware AST, taint, local judge. If you cannot reproduce a
+            number, do not quote it.
           </motion.p>
 
           <motion.div

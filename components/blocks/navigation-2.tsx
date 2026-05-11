@@ -33,25 +33,29 @@ export function Navigation2() {
       {
         icon: GitBranch,
         title: "Four phases + judge",
-        description: "Regex, then macro-aware AST, taint, then a local judge. No model in the hot path.",
+        description:
+          "Regex → macro-aware AST → taint → local judge. Models never sit in the detection path.",
         href: "#features",
       },
       {
         icon: Braces,
         title: "Macro-aware AST",
-        description: "Anchor and Solitaire account shapes after expansion, not just the text you typed.",
+        description:
+          "Sees Anchor `Accounts` and Solitaire `FromAccounts` after expansion—not just the source you typed.",
         href: "#features",
       },
       {
         icon: ShieldCheck,
         title: "Policy & guardrails",
-        description: "Dispatch, scoped output, audit logs when you wire the server layout.",
+        description:
+          "Hooks for auth, scoped output, and audit logs once you wire the server layout.",
         href: "#features",
       },
       {
         icon: TestTube2,
         title: "Two-segment benchmark",
-        description: "11 stubs for regressions, nine audited repos for recall. Rerun it yourself.",
+        description:
+          "Eleven regression stubs, nine public audited repos. Clone the repo and reproduce the numbers.",
         href: "#get-started",
       },
     ],
@@ -59,44 +63,44 @@ export function Navigation2() {
       {
         icon: LayoutGrid,
         title: "Plans & comparison",
-        description: "Feature matrix: open source, commercial seat, team coverage.",
+        description: "Open source vs commercial seat vs team—side by side.",
         href: "/pricing",
       },
       {
         icon: Code2,
         title: "Source on GitHub",
-        description: "MIT / Apache-2.0. Clone it and run on your box.",
+        description: "MIT / Apache-2.0. Clone and run locally.",
         href: GH,
       },
       {
         icon: Megaphone,
         title: "Updates on X",
-        description: "Follow @aressystem_ for announcements and research notes.",
+        description: "@aressystem_ for ship notes and research threads.",
         href: X_PROFILE,
       },
       {
         icon: BookOpen,
         title: "Whitepaper (PDF)",
-        description: "Methods, how we built the benchmark, what we did not try to prove.",
+        description: "Methods, benchmark design, and what we explicitly did not claim.",
         href: WHITEPAPER,
       },
       {
         icon: LifeBuoy,
         title: "FAQ & limitations",
-        description: "Where the tool stops and a human still decides.",
+        description: "Where automation ends and a human still owns the call.",
         href: "#faq",
       },
       {
         icon: FileText,
         title: "Commercial license",
         description:
-          "Seat terms; checkout on this site is x402 + PayAI facilitator, with optional pay.sh gateway URL when set.",
+          "Per-seat terms. Checkout here uses x402 + PayAI; add a pay.sh gateway URL when you publish one.",
         href: "/license",
       },
       {
         icon: TestTube2,
         title: "Run the benchmark",
-        description: "Harness commands and where the dataset lives in the repo.",
+        description: "Command, harness layout, and where the dataset lives in-tree.",
         href: "#get-started",
       },
     ],

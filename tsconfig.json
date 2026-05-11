@@ -30,5 +30,10 @@
     ".next/dev/types/**/*.ts",
     "**/*.mts"
   ],
-  "exclude": ["node_modules"]
+  "exclude": [
+    "node_modules",
+    "dashboard-main",
+    "nextra-docs-template-main",
+    "docs-page"
+  ]
 }

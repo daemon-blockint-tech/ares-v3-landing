@@ -117,8 +117,8 @@ export function Features1() {
             transition={{ duration: 0.45, delay: 0.1 }}
             className="max-w-2xl text-base leading-relaxed text-white/60 sm:text-lg"
           >
-            Generic lint lags Solana. Core stack is regex, macro-aware AST, taint, and a
-            local judge. Same inputs, same findings. Models stay optional and off detections.
+            Off-the-shelf linters miss macro-expanded Solana checks. Core path is regex, macro-aware
+            AST, taint, then a local judge. Same inputs, same findings. Models stay out of detection.
           </motion.p>
         </div>
 

@@ -11,10 +11,10 @@ function LifetimeLicenseCheckout() {
   const payShGatewayUrl = getPayShGatewayCheckoutUrl();
 
   const bullets = [
-    "One-time USD 299 — HTTP 402 / x402 paywall (USDC on Base or Solana)",
-    "This site’s checkout uses the PayAI facilitator with your configured payout addresses",
-    "Same protocol can be reached through a pay.sh gateway URL when the operator publishes one",
-    "Core engine remains free to clone from GitHub",
+    "USD 299 one-time — HTTP 402 / x402 (USDC on Base or Solana)",
+    "Checkout on this domain routes through PayAI with your payout config",
+    "If you publish a pay.sh gateway URL, buyers can use that instead",
+    "Engine stays MIT / Apache-2.0 on GitHub; the seat is the commercial record",
   ];
 
   return (
@@ -28,14 +28,10 @@ function LifetimeLicenseCheckout() {
         <span className="text-sm text-white/45">one-time</span>
       </div>
       <p className="mb-6 text-sm leading-relaxed text-white/55">
-        Optional purchase for organizations that want a paid commercial seat record alongside the
-        open-source core. Each purchase is <strong>one seat</strong> (one named developer); add
-        seats or contact for a team arrangement. USDC settlement uses the{" "}
-        <strong>x402</strong> payment flow: in-browser checkout on this domain goes through the{" "}
-        <strong>PayAI</strong> facilitator (configurable via <code className="text-white/70">FACILITATOR_URL</code>
-        ). You can also pay through a <strong>pay.sh</strong> gateway when the operator exposes that
-        URL (for example <code className="text-white/70">pay curl</code> against the registry gateway
-        — see{" "}
+        Buy a <strong>commercial seat</strong> record (one named developer per purchase; stack seats or
+        email for a team deal). USDC settles over <strong>x402</strong>. This site wires checkout to the{" "}
+        <strong>PayAI</strong> facilitator (<code className="text-white/70">FACILITATOR_URL</code> in
+        env). Operators can also expose a <strong>pay.sh</strong> gateway; see{" "}
         <a
           href={PAY_SH_DOCS}
           target="_blank"
@@ -43,8 +39,8 @@ function LifetimeLicenseCheckout() {
           className="text-white/70 underline decoration-white/25 underline-offset-4 hover:text-white"
         >
           pay.sh docs
-        </a>
-        ). Final sale terms stay between you and the seller.
+        </a>{" "}
+        for registry-style flows. Sale terms stay between you and the seller.
       </p>
       <ul className="mb-8 flex-1 space-y-3">
         {bullets.map((t) => (
@@ -59,7 +55,7 @@ function LifetimeLicenseCheckout() {
           href="/license/pay"
           className="inline-flex min-h-11 flex-1 items-center justify-center rounded-full bg-white px-6 py-3 text-center text-sm font-medium text-black transition-colors hover:bg-white/90 no-underline sm:min-w-[12rem]"
         >
-          Pay on this site (x402)
+          Pay with x402
         </Link>
         {payShGatewayUrl ? (
           <a
@@ -99,13 +95,12 @@ export default function Pricing2() {
             Pricing
           </p>
           <h2 className="mx-auto mb-6 max-w-4xl text-[clamp(1.75rem,3.2vw,2.5rem)] font-medium leading-[1.25] tracking-tight text-white">
-            One core, pick your surface
+            Same core, paid wrapper optional
           </h2>
           <p className="mx-auto max-w-2xl text-base text-white/55">
-            The core analyzer stays local and we deliberately do not meter the open-source path —
-            that costs us runway as a small team, but it keeps the signal reproducible for
-            everyone. Optional layers and the commercial seat exist so organizations can pay where
-            procurement and delivery need a contract, without changing deterministic outputs.
+            The analyzer stays local. The open-source path is not metered per repo (yes, that burns
+            runway for a small team) so anyone can reproduce the harness. Paid seats add contract,
+            procurement, and delivery layers on top of the same deterministic outputs.
           </p>
           <p className="mx-auto mt-4 max-w-2xl text-sm text-white/45">
             <Link

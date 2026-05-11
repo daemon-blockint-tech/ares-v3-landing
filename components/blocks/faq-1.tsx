@@ -26,7 +26,7 @@ export default function FAQ1() {
     {
       question: "Will every alert be a real exploit?",
       answer:
-        "No. Static analysis still burps false positives that deserve human triage. The paper frames the judge as trimming high-confidence noise, not handing down verdicts. Treat alerts as structured starting points.",
+        "No. Static analysis can still flag noise that needs a human. The paper frames the judge as trimming obvious repeats, not issuing verdicts. Treat each alert as a starting point, not a conviction.",
     },
     {
       question: "How should I interpret benchmark scores?",
