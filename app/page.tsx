@@ -4,7 +4,6 @@ import { Features1 } from "@/components/blocks/features-1";
 import TestimonialAudit1 from "@/components/blocks/testimonial-audit-1";
 import Pricing2 from "@/components/blocks/pricing-2";
 import FAQ1 from "@/components/blocks/faq-1";
-import { Auth3 } from "@/components/blocks/auth-3";
 import CTA1 from "@/components/blocks/cta-1";
 import Footer4 from "@/components/blocks/footer-4";
 
@@ -23,7 +22,6 @@ export default function Home() {
           <TestimonialAudit1 />
           <Pricing2 />
           <FAQ1 />
-          <Auth3 />
           <CTA1 />
           <Footer4 />
         </div>

@@ -201,11 +201,11 @@ export function Hero3() {
                 transition={{ duration: 0.5, delay: 1.5 }}
               >
                 <a
-                  href="#deployment"
+                  href="/pricing"
                   className="group relative flex items-center gap-[max(0.6rem,0.8vmax)] pb-[max(0.1rem,0.2vmax)] text-neutral-900 no-underline dark:text-white"
                 >
                   <span className="relative">
-                    Deployment
+                    Pricing
                     <span className="absolute bottom-0 left-0 h-0.5 w-0 origin-left bg-neutral-900 transition-all duration-300 group-hover:w-full dark:bg-white" />
                   </span>
                   <ArrowUpRight className="h-[max(1rem,1.4vmax)] w-[max(1rem,1.4vmax)]" />

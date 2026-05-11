@@ -1,15 +1,72 @@
 "use client";
 
+import { useState } from "react";
 import Image from "next/image";
 import { motion, useReducedMotion } from "motion/react";
-import { ArrowRight } from "lucide-react";
+import { ArrowRight, Loader2 } from "lucide-react";
 import TextType from "@/components/react-bits/text-type";
 
 const ARES_LOGO = "/ARES_LOGO_WHITE.png";
 const X_PROFILE = "https://x.com/aressystem_";
 
+type FooterReleaseStatus = "idle" | "loading" | "success" | "error";
+
 export default function Footer4() {
   const reduceMotion = useReducedMotion();
+  const [email, setEmail] = useState("");
+  const [status, setStatus] = useState<FooterReleaseStatus>("idle");
+  const [errorMessage, setErrorMessage] = useState("");
+
+  async function handleReleaseSubmit(e: React.FormEvent<HTMLFormElement>) {
+    e.preventDefault();
+    const trimmed = email.trim();
+    if (!trimmed) {
+      setStatus("error");
+      setErrorMessage("Enter your email address.");
+      return;
+    }
+
+    setStatus("loading");
+    setErrorMessage("");
+
+    try {
+      const res = await fetch("/api/footer-release-notify", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ email: trimmed }),
+      });
+
+      const payload = (await res.json().catch(() => null)) as
+        | { ok?: boolean; error?: string }
+        | null;
+
+      if (res.ok && payload?.ok) {
+        setStatus("success");
+        setEmail("");
+        return;
+      }
+
+      if (res.status === 503 && payload?.error === "not_configured") {
+        setStatus("error");
+        setErrorMessage(
+          "Email signup is not enabled on this deployment yet. Star or watch the repo for releases.",
+        );
+        return;
+      }
+
+      if (res.status === 400 && payload?.error === "invalid_email") {
+        setStatus("error");
+        setErrorMessage("That does not look like a valid email address.");
+        return;
+      }
+
+      setStatus("error");
+      setErrorMessage("Something went wrong. Try again in a moment.");
+    } catch {
+      setStatus("error");
+      setErrorMessage("Network error. Check your connection and try again.");
+    }
+  }
 
   const footerColumns = [
     {
@@ -17,7 +74,7 @@ export default function Footer4() {
       links: [
         { text: "How it works", href: "#features" },
         { text: "Benchmark", href: "#get-started" },
-        { text: "Deploy", href: "#deployment" },
+        { text: "Pricing", href: "/pricing" },
       ],
     },
     {
@@ -33,13 +90,14 @@ export default function Footer4() {
     {
       title: "Developers",
       links: [
-        { text: "Local CLI", href: "#deployment" },
+        { text: "Local CLI", href: "#pricing" },
         { text: "Harness output", href: "#get-started" },
       ],
     },
     {
       title: "Resources",
       links: [
+        { text: "Commercial license", href: "/license" },
         { text: "License (repo)", href: "https://github.com/daemon-blockint-tech/ARES-v3", external: true },
         { text: "Pact Network audit", href: "/pact-network-security-audit-report.md", external: true },
       ],
@@ -99,21 +157,54 @@ export default function Footer4() {
                     Releases & benchmark notes
                   </h3>
 
-                  {/* Email Input with Button */}
-                  <div className="mb-6 flex min-w-0">
-                    <input
-                      type="email"
-                      placeholder="Optional, connect your list tool"
-                      className="min-w-0 flex-1 border border-r-0 border-neutral-600 bg-neutral-900/50 px-4 py-3 text-sm text-white placeholder-neutral-500 focus:border-neutral-500 focus:outline-none focus:ring-1 focus:ring-white/20 sm:px-6 sm:py-4 sm:text-base"
-                    />
-                    <button
-                      type="button"
-                      className="shrink-0 flex items-center justify-center border border-neutral-600 bg-neutral-800 px-4 transition-colors hover:bg-neutral-700 sm:px-6"
-                      aria-label="Submit email (not connected)"
-                    >
-                      <ArrowRight className="h-5 w-5 text-white sm:h-6 sm:w-6" />
-                    </button>
-                  </div>
+                  <form onSubmit={handleReleaseSubmit} className="mb-6">
+                    <div className="flex min-w-0">
+                      <label htmlFor="footer-release-email" className="sr-only">
+                        Email for release and benchmark notes
+                      </label>
+                      <input
+                        id="footer-release-email"
+                        name="email"
+                        type="email"
+                        autoComplete="email"
+                        inputMode="email"
+                        placeholder="you@company.com"
+                        value={email}
+                        onChange={(e) => {
+                          setEmail(e.target.value);
+                          if (status === "error" || status === "success") {
+                            setStatus("idle");
+                            setErrorMessage("");
+                          }
+                        }}
+                        disabled={status === "loading"}
+                        className="min-w-0 flex-1 border border-r-0 border-neutral-600 bg-neutral-900/50 px-4 py-3 text-sm text-white placeholder-neutral-500 focus:border-neutral-500 focus:outline-none focus:ring-1 focus:ring-white/20 disabled:opacity-60 sm:px-6 sm:py-4 sm:text-base"
+                      />
+                      <button
+                        type="submit"
+                        disabled={status === "loading"}
+                        className="shrink-0 flex items-center justify-center border border-neutral-600 bg-neutral-800 px-4 transition-colors hover:bg-neutral-700 disabled:cursor-not-allowed disabled:opacity-60 sm:px-6"
+                        aria-label="Subscribe to release notes"
+                        aria-busy={status === "loading"}
+                      >
+                        {status === "loading" ? (
+                          <Loader2 className="h-5 w-5 animate-spin text-white sm:h-6 sm:w-6" aria-hidden />
+                        ) : (
+                          <ArrowRight className="h-5 w-5 text-white sm:h-6 sm:w-6" aria-hidden />
+                        )}
+                      </button>
+                    </div>
+                    {status === "success" ? (
+                      <p className="mt-3 text-sm text-emerald-400/90" role="status">
+                        Thanks — you are on the list. We only email for releases and benchmark notes.
+                      </p>
+                    ) : null}
+                    {status === "error" ? (
+                      <p className="mt-3 text-sm text-amber-300/95" role="alert">
+                        {errorMessage}
+                      </p>
+                    ) : null}
+                  </form>
 
                   <p className="text-xs text-neutral-400 sm:text-sm">
                     Rather skip email? Star or watch{" "}

@@ -19,17 +19,20 @@ export default function CTA1() {
             viewport={{ once: true }}
             transition={{ duration: 0.5 }}
           >
-            Benchmark on your own machine
+            Run the two-segment benchmark locally
           </motion.h2>
 
           <motion.p
-            className="mx-auto mb-10 max-w-xl text-base leading-relaxed text-white/80 sm:text-lg"
+            className="mx-auto mb-10 max-w-2xl text-base leading-relaxed text-white/80 sm:text-lg"
             initial={{ opacity: 0, y: 16 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.5, delay: 0.06 }}
           >
-            Clone, run harness, diff ground_truth.json. Real metrics survive any laptop.
+            Clone the open-source tree and run the bundled harness on hardware you control. Segment
+            A is eleven deterministic stubs; Segment B scores recall and precision on nine audited
+            public repos—the same four-phase, deterministic pipeline (regex → macro-aware AST → taint
+            → local judge) described in the paper. If you cannot reproduce a number, do not ship it.
           </motion.p>
 
           <motion.div
@@ -51,7 +54,7 @@ export default function CTA1() {
               href="#faq"
               className="inline-flex min-h-11 w-full items-center justify-center rounded-full border border-white/22 px-8 py-3 text-sm font-medium text-white transition-colors hover:bg-white/10 sm:w-auto no-underline"
             >
-              Read FAQ first
+              How to read scores (FAQ)
             </a>
           </motion.div>
 
@@ -62,8 +65,7 @@ export default function CTA1() {
             viewport={{ once: true }}
             transition={{ duration: 0.45, delay: 0.18 }}
           >
-            cargo run -p ares-cli --release -- benchmark --dataset dataset --output
-            ./report.md
+            cargo run -p ares-cli -- benchmark
           </motion.p>
         </div>
       </div>

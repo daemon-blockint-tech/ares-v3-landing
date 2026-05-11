@@ -1,0 +1,149 @@
+/**
+ * ARES auth: restyle @solana/wallet-adapter-react-ui WalletModal to match
+ * OAuth rows on the sign-in card (neutral surfaces, rounded-lg, no purple list).
+ * Scoped to modal roots that pass className `ares-wallet-modal-root`.
+ */
+
+.wallet-adapter-modal.ares-wallet-modal-root .wallet-adapter-modal-overlay {
+  background: rgba(0, 0, 0, 0.65);
+  backdrop-filter: blur(4px);
+}
+
+.wallet-adapter-modal.ares-wallet-modal-root .wallet-adapter-modal-container {
+  margin: clamp(1rem, 4vw, 3rem);
+  min-height: calc(100dvh - 2 * clamp(1rem, 4vw, 3rem));
+}
+
+.wallet-adapter-modal.ares-wallet-modal-root .wallet-adapter-modal-wrapper {
+  max-width: min(400px, calc(100vw - 2rem));
+  border-radius: 0.75rem;
+  background: rgb(23 23 23);
+  border: 1px solid rgb(64 64 64);
+  box-shadow: 0 25px 50px -12px rgb(0 0 0 / 0.55);
+  font-family: inherit;
+}
+
+.wallet-adapter-modal.ares-wallet-modal-root .wallet-adapter-modal-button-close {
+  top: 0.75rem;
+  right: 0.75rem;
+  width: 2.25rem;
+  height: 2.25rem;
+  line-height: 2.25rem;
+  background: rgb(38 38 38);
+  border: 1px solid rgb(64 64 64);
+}
+
+.wallet-adapter-modal.ares-wallet-modal-root .wallet-adapter-modal-button-close:hover {
+  background: rgb(64 64 64);
+}
+
+.wallet-adapter-modal.ares-wallet-modal-root .wallet-adapter-modal-title {
+  font-weight: 600;
+  font-size: 1.125rem;
+  line-height: 1.35;
+  letter-spacing: -0.025em;
+  padding: 3rem 1.5rem 0.75rem;
+  color: rgb(250 250 250);
+}
+
+@media (max-width: 374px) {
+  .wallet-adapter-modal.ares-wallet-modal-root .wallet-adapter-modal-title {
+    font-size: 1rem;
+  }
+}
+
+.wallet-adapter-modal.ares-wallet-modal-root .ares-wallet-modal-sub {
+  margin: 0 1.5rem 1rem;
+  padding: 0;
+  text-align: center;
+  font-size: 0.875rem;
+  line-height: 1.45;
+  font-weight: 400;
+  letter-spacing: -0.01em;
+  color: rgb(163 163 163);
+}
+
+.wallet-adapter-modal.ares-wallet-modal-root .wallet-adapter-modal-list {
+  margin: 0 0 0.75rem;
+  padding: 0 1rem;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.wallet-adapter-modal.ares-wallet-modal-root .wallet-adapter-modal-list li {
+  margin-bottom: 0.5rem;
+}
+
+.wallet-adapter-modal.ares-wallet-modal-root .wallet-adapter-modal-list .wallet-adapter-button {
+  box-sizing: border-box;
+  width: 100%;
+  min-height: 44px;
+  height: auto;
+  line-height: 1.25;
+  padding: 0.75rem 1.25rem;
+  border-radius: 0.5rem;
+  font-size: 0.875rem;
+  font-weight: 500;
+  letter-spacing: -0.01em;
+  color: rgb(250 250 250) !important;
+  background-color: rgb(38 38 38) !important;
+  border: 1px solid rgb(64 64 64) !important;
+  justify-content: flex-start;
+  gap: 0.75rem;
+  transition:
+    transform 0.12s ease,
+    background-color 0.15s ease,
+    border-color 0.15s ease;
+}
+
+.wallet-adapter-modal.ares-wallet-modal-root
+  .wallet-adapter-modal-list
+  .wallet-adapter-button:not([disabled]):hover {
+  background-color: rgb(64 64 64) !important;
+}
+
+.wallet-adapter-modal.ares-wallet-modal-root
+  .wallet-adapter-modal-list
+  .wallet-adapter-button:not([disabled]):active {
+  transform: translateY(1px);
+}
+
+.wallet-adapter-modal.ares-wallet-modal-root
+  .wallet-adapter-modal-list
+  .wallet-adapter-button:not([disabled]):focus-visible {
+  outline: 2px solid rgb(163 163 163);
+  outline-offset: 2px;
+}
+
+.wallet-adapter-modal.ares-wallet-modal-root .wallet-adapter-modal-list-more {
+  width: 100%;
+  justify-content: center;
+  align-self: center;
+  padding: 0.5rem 1rem 1rem;
+  color: rgb(212 212 212);
+  font-size: 0.8125rem;
+  font-weight: 500;
+}
+
+.wallet-adapter-modal.ares-wallet-modal-root .wallet-adapter-modal-list-more:hover {
+  color: rgb(250 250 250);
+}
+
+.wallet-adapter-modal.ares-wallet-modal-root .wallet-adapter-modal-middle {
+  padding: 0 1.5rem 1rem;
+}
+
+.wallet-adapter-modal.ares-wallet-modal-root .wallet-adapter-modal-middle-button {
+  margin-top: 1rem;
+  min-height: 44px;
+  border-radius: 0.5rem;
+  font-size: 0.875rem;
+  font-weight: 500;
+  background-color: rgb(38 38 38) !important;
+  border: 1px solid rgb(64 64 64) !important;
+  color: rgb(250 250 250) !important;
+}
+
+.wallet-adapter-modal.ares-wallet-modal-root .wallet-adapter-modal-middle-button:hover {
+  background-color: rgb(64 64 64) !important;
+}

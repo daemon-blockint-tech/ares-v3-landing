@@ -13,7 +13,7 @@ export default function Navigation1() {
     product: [
       { name: "How it works (4 phases + judge)", href: "#features" },
       { name: "Benchmark", href: "#get-started" },
-      { name: "Deploy: CLI, API, IDE", href: "#deployment" },
+      { name: "Pricing & commercial license", href: "#pricing" },
       { name: "FAQ & limitations", href: "#faq" },
     ],
     docs: [

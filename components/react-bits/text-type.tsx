@@ -178,7 +178,6 @@ export default function TextType({
     }
 
     return () => clearTimeout(timeout);
-    // eslint-disable-next-line react-hooks/exhaustive-deps -- mirrors upstream animation loop deps
   }, [
     currentCharIndex,
     displayedText,
@@ -202,6 +201,7 @@ export default function TextType({
     hideCursorWhileTyping &&
     (currentCharIndex < activeSentence.length || isDeleting);
 
+  /* eslint-disable react-hooks/refs -- polymorphic `Component` + forwarded ref; host is DOM or forwardRef-compatible */
   return createElement(
     Component,
     {
@@ -224,4 +224,5 @@ export default function TextType({
       </span>
     ),
   );
+
 }

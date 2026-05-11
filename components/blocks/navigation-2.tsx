@@ -15,7 +15,9 @@ import {
   Code2,
   BookOpen,
   Megaphone,
+  LayoutGrid,
 } from "lucide-react";
+import { NavAuthActions, NavDesktopPrimaryCta } from "@/components/auth/nav-auth-actions";
 
 const GH = "https://github.com/daemon-blockint-tech/ARES-v3";
 const X_PROFILE = "https://x.com/aressystem_";
@@ -55,6 +57,12 @@ export function Navigation2() {
     ],
     Resources: [
       {
+        icon: LayoutGrid,
+        title: "Plans & comparison",
+        description: "Feature matrix: open source, commercial seat, team coverage.",
+        href: "/pricing",
+      },
+      {
         icon: Code2,
         title: "Source on GitHub",
         description: "MIT / Apache-2.0. Clone it and run on your box.",
@@ -80,6 +88,13 @@ export function Navigation2() {
       },
       {
         icon: FileText,
+        title: "Commercial license",
+        description:
+          "Seat terms; checkout on this site is x402 + PayAI facilitator, with optional pay.sh gateway URL when set.",
+        href: "/license",
+      },
+      {
+        icon: TestTube2,
         title: "Run the benchmark",
         description: "Harness commands and where the dataset lives in the repo.",
         href: "#get-started",
@@ -102,11 +117,11 @@ export function Navigation2() {
             {/* Nav Container - Always rounded rectangle */}
             <div className="mx-auto w-fit rounded-3xl bg-white/40 backdrop-blur-2xl border border-neutral-200/50 shadow-xl dark:bg-neutral-950/20 dark:border-neutral-800/50 overflow-hidden">
               {/* Main Nav Bar */}
-              <div className="flex items-center justify-between gap-2 pl-6 pr-3 py-3">
+              <div className="flex min-w-0 max-w-[min(100vw-2rem,1200px)] items-center gap-3 pl-5 pr-2 py-2.5 sm:gap-4 sm:pl-6 sm:pr-3 sm:py-3">
                 {/* Logo */}
                 <a
                   href="#top"
-                  className="mr-6 flex shrink-0 items-center no-underline"
+                  className="mr-2 flex shrink-0 items-center no-underline sm:mr-4 lg:mr-6"
                 >
                   <Image
                     src={ARES_LOGO}
@@ -118,56 +133,35 @@ export function Navigation2() {
                   />
                 </a>
 
-                {/* Nav Links */}
-                <div className="flex items-center gap-1">
+                {/* Nav Links — centered, can shrink on tight widths */}
+                <div className="flex min-w-0 flex-1 items-center justify-center gap-0.5 sm:gap-1">
                   <button
+                    type="button"
                     onMouseEnter={() => setActiveMenu("Product")}
-                    className="px-4 py-2 text-sm tracking-tight font-light text-neutral-600 dark:text-neutral-400 hover:text-neutral-900 dark:hover:text-white rounded-full"
+                    className="shrink-0 px-2 py-2 text-xs tracking-tight font-light text-neutral-600 dark:text-neutral-400 hover:text-neutral-900 dark:hover:text-white rounded-full sm:px-4 sm:text-sm"
                   >
                     Product
                   </button>
                   <button
+                    type="button"
                     onMouseEnter={() => setActiveMenu("Resources")}
-                    className="px-4 py-2 text-sm tracking-tight font-light text-neutral-600 dark:text-neutral-400 hover:text-neutral-900 dark:hover:text-white rounded-full"
+                    className="shrink-0 px-2 py-2 text-xs tracking-tight font-light text-neutral-600 dark:text-neutral-400 hover:text-neutral-900 dark:hover:text-white rounded-full sm:px-4 sm:text-sm"
                   >
                     Resources
                   </button>
                   <a
-                    href="#deployment"
-                    className="px-4 py-2 text-sm tracking-tight font-light text-neutral-600 dark:text-neutral-400 hover:text-neutral-900 dark:hover:text-white rounded-full no-underline"
+                    href="/pricing"
+                    className="shrink-0 px-2 py-2 text-xs tracking-tight font-light text-neutral-600 dark:text-neutral-400 hover:text-neutral-900 dark:hover:text-white rounded-full no-underline sm:px-4 sm:text-sm"
                     onMouseEnter={() => setActiveMenu(null)}
                   >
-                    Deploy
+                    Pricing
                   </a>
                 </div>
 
-                {/* Right Side Actions */}
-                <div className="flex items-center gap-2 ml-6">
-                  <a
-                    href={GH}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="px-4 py-2 tracking-tight text-sm font-light text-neutral-600 dark:text-neutral-400 hover:text-neutral-900 dark:hover:text-white no-underline"
-                    onMouseEnter={() => setActiveMenu(null)}
-                  >
-                    View source
-                  </a>
-                  <a
-                    href={X_PROFILE}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="px-4 py-2 tracking-tight text-sm font-light text-neutral-600 dark:text-neutral-400 hover:text-neutral-900 dark:hover:text-white no-underline"
-                    onMouseEnter={() => setActiveMenu(null)}
-                  >
-                    X
-                  </a>
-                  <a
-                    href="#get-started"
-                    className="px-5 py-2 rounded-lg bg-landing-canvas dark:bg-white text-white dark:text-black text-sm font-light tracking-tight hover:bg-neutral-800 dark:hover:bg-neutral-200 no-underline"
-                    onMouseEnter={() => setActiveMenu(null)}
-                  >
-                    Run the benchmark
-                  </a>
+                {/* Right: auth + primary CTA */}
+                <div className="flex min-w-0 shrink-0 items-center gap-1 border-l border-neutral-200/70 pl-2 dark:border-neutral-700/80 sm:gap-1.5 sm:pl-3 lg:ml-2 lg:gap-2 lg:pl-4">
+                  <NavAuthActions variant="desktop" />
+                  <NavDesktopPrimaryCta onMouseEnter={() => setActiveMenu(null)} />
                 </div>
               </div>
 
@@ -238,7 +232,7 @@ export function Navigation2() {
           >
             <div className="rounded-3xl bg-white/40 backdrop-blur-2xl border border-neutral-300 shadow-xl dark:bg-neutral-950/20 dark:border-neutral-800/50 overflow-hidden">
               {/* Mobile Nav Bar */}
-              <div className="flex items-center justify-between pl-4 pr-3 py-3">
+              <div className="flex items-center justify-between gap-2 pl-4 pr-3 py-3">
                 {/* Logo */}
                 <a
                   href="#top"
@@ -254,18 +248,20 @@ export function Navigation2() {
                   />
                 </a>
 
-                {/* Mobile Menu Button */}
-                <button
-                  onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-                  className="flex h-10 w-10 items-center justify-center rounded-lg bg-landing-canvas dark:bg-white text-white dark:text-black"
-                  aria-label={mobileMenuOpen ? "Close menu" : "Open menu"}
-                >
-                  {mobileMenuOpen ? (
-                    <X className="h-5 w-5" />
-                  ) : (
-                    <Menu className="h-5 w-5" />
-                  )}
-                </button>
+                <div className="flex flex-1 items-center justify-end gap-2 min-w-0">
+                  <NavAuthActions variant="mobile" />
+                  <button
+                    onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+                    className="flex h-10 w-10 shrink-0 items-center justify-center rounded-lg bg-landing-canvas dark:bg-white text-white dark:text-black"
+                    aria-label={mobileMenuOpen ? "Close menu" : "Open menu"}
+                  >
+                    {mobileMenuOpen ? (
+                      <X className="h-5 w-5" />
+                    ) : (
+                      <Menu className="h-5 w-5" />
+                    )}
+                  </button>
+                </div>
               </div>
 
               {/* Mobile Expanded Content */}
@@ -284,10 +280,10 @@ export function Navigation2() {
                         {/* Simple Links */}
                         <div className="space-y-1">
                           <a
-                            href="#deployment"
+                            href="/pricing"
                             className="block py-2 px-2 text-sm font-medium text-neutral-900 dark:text-white no-underline"
                           >
-                            Deploy
+                            Pricing
                           </a>
                           <a
                             href={GH}

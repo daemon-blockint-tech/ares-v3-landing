@@ -10,7 +10,7 @@ export default function Footer1() {
       links: [
         { text: "How it works", href: "#features" },
         { text: "Benchmark", href: "#get-started" },
-        { text: "Deployment modes", href: "#deployment" },
+        { text: "Pricing & license", href: "#pricing" },
       ],
     },
     {
@@ -33,6 +33,7 @@ export default function Footer1() {
           href: "https://github.com/daemon-blockint-tech/ARES-v3",
           external: true,
         },
+        { text: "Commercial license terms", href: "/license" },
         { text: "Third-party datasets", href: "#faq" },
       ],
     },
